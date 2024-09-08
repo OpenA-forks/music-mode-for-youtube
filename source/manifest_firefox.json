@@ -5,7 +5,9 @@
   "version": "1.2.8",
   "default_locale": "en",
   "incognito":"spanning",
-  
+
+  "homepage_url": "https://addons.mozilla.org/firefox/addon/music-mode-for-youtube",
+
   "description": "__MSG_extDescription__",
 
   "browser_specific_settings": {
@@ -89,7 +91,7 @@
         "img/photo.svg",
         "img/play.svg",
         "img/logo/full_logo.svg",
-        "img/youtubeImages/default.jpg"
+        "img/symbols.svg"
       ],
       "matches": [ 
         "<all_urls>"

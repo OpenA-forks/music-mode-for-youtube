@@ -5,7 +5,9 @@
   "version": "6.4.8",
   "default_locale": "en",
   "incognito":"spanning",
-  
+
+  "homepage_url": "https://chromewebstore.google.com/detail/music-mode-for-youtube/abbpaepbpakcpipajigmlpnhlnbennna",
+
   "description": "__MSG_extDescription__",
   "offline_enabled": true,
   "icons": {
@@ -81,7 +83,7 @@
         "img/photo.svg",
         "img/play.svg",
         "img/logo/full_logo.svg",
-        "img/youtubeImages/default.jpg"
+        "img/symbols.svg"
       ],
       "matches": [ 
         "<all_urls>"
