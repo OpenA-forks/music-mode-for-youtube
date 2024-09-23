@@ -1,5 +1,6 @@
 
-![Music Mode for YouTube™ logo](./readme_logo.svg) 
+<img src="source/img/logo/full_logo.svg" width="50" height="60"><img src="source/img/logo/logo_only.svg#svgView(viewBox(30,0,110,36))" height="60"> 
+
 # Music Mode for YouTube™
 [![Available in the Chrome Web Store](./chrome_badge.png)](https://chromewebstore.google.com/detail/music-mode-for-youtube/abbpaepbpakcpipajigmlpnhlnbennna) [![Get the Add-on](./firefox_badge.webp)](https://addons.mozilla.org/en/firefox/addon/music-mode-for-youtube/)
 ## Overview
