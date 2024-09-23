@@ -312,6 +312,7 @@ main {
   border-radius: var(--border-radius);
   color: #777;
   background-color: #e0e0e0;
+  overflow-y: hidden;
 }
 
 .btn-s3 {
@@ -360,7 +361,7 @@ main {
 
 [id$=_on]:checked ~ .v-on {
   background-color: var(--on-color);
-  box-shadow: 1px .5px 0 #949494;
+  box-shadow: 2px 0 1px #a8a8a8;
 }
 
 [id$=_x]:checked ~ .v-x > * { visibility: hidden; }
@@ -370,7 +371,7 @@ main {
 }
 [id$=_off]:checked ~ .v-off {
   background-color: var(--off-color);
-  box-shadow: -2px .5px 0 #949494;
+  box-shadow: -2px 0 1px #a8a8a8;
 }
 
 [id$=_off]:checked ~ .v-off,
