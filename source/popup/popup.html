@@ -9,9 +9,10 @@
 <body>
   <form id="container">
     <header>
-      <div id="logo">
-        <img src="/img/logo/logo_only.svg">
-      </div>
+      <svg id="logo" width="136" height="30" xmlns="http://www.w3.org/2000/svg">
+        <use href="/img/logo/full_logo.svg#mm__logo" width="30" height="30"></use>
+        <use href="/img/logo/logo_only.svg#mm__tShort" fill="#fc0000"></use>
+      </svg>
       <div class="trigger-btn btn-s2">
         <input id="mm_enabled_on"  type="radio" name="mm_enabled" value="1" hidden>
         <input id="mm_enabled_off" type="radio" name="mm_enabled" value="0" hidden>

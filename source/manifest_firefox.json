@@ -18,10 +18,7 @@
   },
 
   "icons": {
-    "19": "img/logo/icon19.png",
-    "38": "img/logo/icon38.png",
-    "48": "img/logo/icon48.png",
-    "128": "img/logo/icon128.png"
+    "64": "img/logo/full_logo.svg"
   },
   "commands": {
     "run_extension_tab": {
