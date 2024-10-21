@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -7,233 +7,247 @@
   <link rel="stylesheet" href="optionsPageStyle.css">
 </head>
 
-<body id="OptionsTitle">
-  <div id="container">
-    <div id="header">
+<body>
+  <form id="container">
+
+    <div class="hd-menu">
       <svg id="logo" width="200" height="50" xmlns="http://www.w3.org/2000/svg">
         <use href="/img/logo/full_logo.svg#mm__logo" width="43.7" height="43.7"></use>
         <use href="/img/logo/logo_only.svg#mm__tFull" transform="scale(1.43)"></use>
       </svg>
-      <div id="menuContainer">
-        <a href="about.html" class="menuLinks" data-i18n="about"></a>
-        <a href="options.html" class="menuLinks" data-i18n="options"></a>
-        <a href="contact.html" class="menuLinks" data-i18n="contact"></a>
-        <a href="https://www.paypal.com/donate?hosted_button_id=V2EHRNX8RBTX2" target="_blank" class="menuLinks"><span id="donation_menu_link" data-i18n="donation"></span></a>
+      <div class="menu-sect">
+        <a class="menu-link" data-i18n="about"    href="#about"></a>
+        <a class="menu-link" data-i18n="options"  href="#options"></a>
+        <a class="menu-link" data-i18n="contact"  href="#contact"></a>
+        <a class="menu-link" data-i18n="donation" href="https://www.paypal.com/donate?hosted_button_id=V2EHRNX8RBTX2" target="_blank"></a>
       </div>
     </div>
-    <div id="bodyContainer">
-      <div id="title" data-i18n="options">Options</div>
 
-      <div class="pageBody">
-        <div class="settings setbord">
-          <div class="descr_toggle">
-            <div class="settingsText optionsGroupTitle">
-              <div class="settingsHead"><span data-i18n="enabledByDefault"></span></div>
-              <div class="settingsDescription" data-i18n="enabledByDefault_text"></div>
-            </div>
-            <div class="toggleButton">
-              <label class="switch">
-                <input type="checkbox" name="enabled" class="moreOptionsCheckboxes">
-                <span class="slider round"></span>
-              </label>
-            </div>
-          </div>
-        </div>
+    <div id="s_about" class="bd-sect">
+      <p class="title1">
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+          <use href="#icon__wrench"></use>
+        </svg>
+        <strong data-i18n="about"></strong>
+      </p>
+      <p class="title3">
+        <strong data-i18n="tips"></strong>
+      </p>
+      <div class="page-bd">
+        <ul class="setts-item">
+          <li data-i18n="tip_1"></li>
+          <li data-i18n="tip_2"></li>
+        </ul>
       </div>
-
-      <div id="addOptions">
-
+      <p class="title3">
+        <strong data-i18n="privacy_policy"></strong>
+      </p>
+      <div class="page-bd">
+        <div class="setts-item" data-i18n="privacy_policy_text"></div>
       </div>
-
-      <div class="title2" data-i18n="videoPlayer"></div>
-      <div class="pageBody">
-        <div class="settings setbord">
-          <div class="descr_toggle">
-            <div class="settingsText">
-              <div class="settingsHead"><span data-i18n="hideLogo"></span></div>
-              <div class="settingsDescription" data-i18n="hideLogo_text"></div>
-            </div>
-            <div class="toggleButton">
-              <label class="switch">
-                <input type="checkbox" name="hide_logo" class="moreOptionsCheckboxes">
-                <span class="slider round"></span>
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="settings setbord">
-          <div class="descr_toggle">
-            <div class="settingsText">
-              <div class="settingsHead"><span data-i18n="showVideoThumbnail"></span></div>
-              <div class="settingsDescription" data-i18n="showVideoThumbnail_text"></div>
-            </div>
-            <div class="toggleButton">
-              <label class="switch">
-                <input type="checkbox" name="show_thumbnail" class="moreOptionsCheckboxes">
-                <span class="slider round"></span>
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="title2" data-i18n="continueWatchingPrompt_title"></div>
-      <div class="pageBody">
-        <div class="settings setbord">
-          <div class="descr_toggle">
-            <div class="settingsText">
-              <div class="settingsHead"><span data-i18n="continueWatchingPrompt_option"></span></div>
-              <div class="settingsDescription" data-i18n="continueWatchingPrompt_text"></div>
-            </div>
-            <div class="toggleButton">
-              <label class="switch">
-                <input type="checkbox" name="continue_watching_prompt" class="moreOptionsCheckboxes">
-                <span class="slider round"></span>
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="advanced_options">
-
-        <div class="title2 advanced">
-          <label class="checkbox-container">
-            <input type="checkbox" class="groupCheckboxes" name="advanced_options">
-            <span data-i18n="advanced_options"></span>
-            <span class="checkmark arrow-up"></span>
-          </label>
-        </div>
-
-        <div class="optionsContainer">
-
-          <div class="title2" data-i18n="progress_bar_title"></div>
-          <div class="pageBody" id="progress_bar">
-            <div class="settings setbord">
-              <div class="descr_toggle">
-                <div class="settingsText">
-                  <div class="settingsHead"><span data-i18n="progress_bar"></span></div>
-                  <div class="settingsDescription" data-i18n="progress_bar_text"></div>
-                </div>
-                <div class="toggleButton">
-                  <label class="switch">
-                    <input type="checkbox" name="progress_bar" class="groupCheckboxes">
-                    <span class="slider round"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="optionsContainer">
-              <div class="settings setbord">
-                <div class="descr_toggle">
-                  <ul class="settingsTextIcon">
-                    <li class="settingsText">
-                      <div class="settingsHead"><span data-i18n="control_buttons"></span></div>
-                      <div class="settingsDescription" data-i18n="control_buttons_text"></div>
-                    </li>
-                  </ul>
-                  <div class="toggleButton">
-                    <label class="switch">
-                      <input type="checkbox" name="control_buttons" class="optionsCheckboxes">
-                      <span class="slider round"></span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="title2" data-i18n="tempOptionTitle"></div>
-          <div class="pageBody">
-            <div class="settings setbord">
-              <div class="descr_toggle">
-                <div class="settingsText">
-                  <div class="settingsHead"><span data-i18n="tempOption"></span></div>
-                  <div class="settingsDescription" data-i18n="tempOptionDescription"></div>
-                </div>
-                <div class="toggleButton">
-                  <label class="switch">
-                    <input type="checkbox" name="popup_current_page" class="moreOptionsCheckboxes">
-                    <span class="slider round"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="settings setbord">
-              <div class="descr_toggle">
-                <div class="settingsText">
-                  <div class="settingsHead"><span data-i18n="optionsMenuOption"></span></div>
-                  <div class="settingsDescription" data-i18n="optionsMenuOptionDescription"></div>
-                </div>
-                <div class="toggleButton">
-                  <label class="switch">
-                    <input type="checkbox" name="popup_specific_options" class="moreOptionsCheckboxes">
-                    <span class="slider round"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div data-i18n="popupExplanation" class="popupExplanation"></div>
-
-          <div class="title2" data-i18n="quickAccessButtons"></div>
-          <div class="pageBody">
-            <div class="settings setbord">
-              <div class="descr_toggle">
-                <div class="settingsText">
-                  <div class="settingsHead"><span data-i18n="quickAccessButtonsVideo"></span></div>
-                  <div class="settingsDescription" data-i18n="quickAccessButtonsVideoDescription"></div>
-                </div>
-                <div class="toggleButton">
-                  <label class="switch">
-                    <input type="checkbox" name="quick_access_buttons_video" class="moreOptionsCheckboxes">
-                    <span class="slider round"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="settings setbord">
-              <div class="descr_toggle">
-                <div class="settingsText">
-                  <div class="settingsHead"><span data-i18n="quickAccessButtonsImages"></span></div>
-                  <div class="settingsDescription" data-i18n="quickAccessButtonsImagesDescription"></div>
-                </div>
-                <div class="toggleButton">
-                  <label class="switch">
-                    <input type="checkbox" name="quick_access_buttons_images" class="moreOptionsCheckboxes">
-                    <span class="slider round"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="title2" data-i18n="liveVideoTitle"></div>
-          <div class="pageBody">
-            <div class="settings setbord">
-              <div class="descr_toggle">
-                <div class="settingsText">
-                  <div class="settingsHead"><span data-i18n="live_144"></span><span class="beta_feature">BETA</span>
-                  </div>
-                  <div class="settingsDescription" data-i18n="live_144_text"></div>
-                </div>
-                <div class="toggleButton">
-                  <label class="switch">
-                    <input type="checkbox" name="live_144" class="moreOptionsCheckboxes">
-                    <span class="slider round"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <p class="title3">
+        <strong data-i18n="date_of_release"></strong>
+      </p>
+      <div class="page-bd">
+        <div class="setts-item" data-i18n="date_of_release_text"></div>
       </div>
     </div>
-  </div>
 
-  <script type="text/javascript" src="options_code.js"></script>
-  <script type="text/javascript" src="setTheTitles.js"></script>
+    <div id="s_contact" class="bd-sect">
+      <p class="title1">
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+          <use href="#icon__person"></use>
+        </svg>
+        <strong data-i18n="contact"></strong>
+      </p>
+      <div class="page-bd">
+        <div class="setts-item">
+          <p class="title4"><strong data-i18n="contactHeader"></strong></p>
+          <b>Email:    </b><a target="_blank" href="mailto:thunderarea.np@gmail.com">thunderarea.np@gmail.com</a><br>
+          <b>LinkedIn: </b><a target="_blank" href="https://gr.linkedin.com/in/nick-pantelidis-1184a5126?trk=people-guest_profile-result-card_result-card_full-click">Nick Pantelidis</a><br>
+          <b>GitHub:   </b><a target="_blank" href="https://github.com/thunderarea">Thunderarea</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="s_options" class="bd-sect">
+      <p class="title1">
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+          <use href="#icon__gear"></use>
+        </svg>
+        <strong data-i18n="options"></strong>
+      </p>
+      <div class="page-bd">
+        <div class="setts-item h-card">
+          <div class="setts-text">
+            <div class="setts-head" data-i18n="enabledByDefault"></div>
+            <div class="setts-desc" data-i18n="enabledByDefault_text"></div>
+          </div>
+          <div class="setts-tbtn chex-s1">
+            <input id="mm_enabled" type="checkbox" hidden>
+            <label for="mm_enabled" class="b-chk v-on v-off"></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-bd" id="site_opts">
+      </div>
+
+      <p class="title2">
+        <strong data-i18n="videoPlayer"></strong>
+      </p>
+      <div class="page-bd">
+        <div class="setts-item h-card">
+          <div class="setts-text">
+            <div class="setts-head" data-i18n="hideLogo"></div>
+            <div class="setts-desc" data-i18n="hideLogo_text"></div>
+          </div>
+          <div class="setts-tbtn chex-s1">
+            <input id="hide_logo" type="checkbox" hidden>
+            <label for="hide_logo" class="b-chk v-on v-off"></label>
+          </div>
+        </div>
+        <div class="setts-item h-card">
+          <div class="setts-text">
+            <div class="setts-head" data-i18n="showVideoThumbnail"></div>
+            <div class="setts-desc" data-i18n="showVideoThumbnail_text"></div>
+          </div>
+          <div class="setts-tbtn chex-s1">
+            <input id="show_thumbnail" type="checkbox" hidden>
+            <label for="show_thumbnail" class="b-chk v-on v-off"></label>
+          </div>
+        </div>
+      </div>
+
+      <p class="title2">
+        <strong data-i18n="continueWatchingPrompt_title"></strong>
+      </p>
+      <div class="page-bd">
+        <div class="setts-item h-card">
+          <div class="setts-text">
+            <div class="setts-head" data-i18n="continueWatchingPrompt_option"></div>
+            <div class="setts-desc" data-i18n="continueWatchingPrompt_text"></div>
+          </div>
+          <div class="setts-tbtn chex-s1">
+            <input id="continue_watching_prompt" type="checkbox" hidden>
+            <label for="continue_watching_prompt" class="b-chk v-on v-off"></label>
+          </div>
+        </div>
+      </div>
+
+      <div id="advn_opts">
+
+        <p class="title2">
+          <strong class="check-mk" data-i18n="advanced_options"></strong>
+        </p>
+        <div class="setts-opts">
+
+          <p class="title3" >
+            <strong data-i18n="progress_bar_title"></strong>
+          </p>
+          <div class="page-bd">
+            <div class="setts-item h-card">
+              <div class="setts-text">
+                <div class="setts-head" data-i18n="progress_bar"></div>
+                <div class="setts-desc" data-i18n="progress_bar_text"></div>
+              </div>
+              <div class="setts-tbtn chex-s1">
+                <input id="progress_bar" type="checkbox" hidden>
+                <label for="progress_bar" class="b-chk v-on v-off"></label>
+              </div>
+            </div>
+            <div class="setts-item h-card">
+              <div class="setts-text">
+                <div class="setts-head" data-i18n="control_buttons"></div>
+                <div class="setts-desc" data-i18n="control_buttons_text"></div>
+              </div>
+              <div class="setts-tbtn chex-s1">
+                <input id="control_buttons" type="checkbox" hidden>
+                <label for="control_buttons" class="b-chk v-on v-off"></label>
+              </div>
+            </div>
+          </div>
+
+          <p class="title3" >
+            <strong data-i18n="tempOptionTitle"></strong>
+          </p>
+          <div class="page-bd">
+            <div class="setts-item h-card">
+              <div class="setts-text">
+                <div class="setts-head" data-i18n="tempOption"></div>
+                <div class="setts-desc" data-i18n="tempOptionDescription"></div>
+              </div>
+              <div class="setts-tbtn chex-s1">
+                <input id="popup_current_page" type="checkbox" hidden>
+                <label for="popup_current_page" class="b-chk v-on v-off"></label>
+              </div>
+            </div>
+            <div class="setts-item h-card next-explain">
+              <div class="setts-text">
+                <div class="setts-head" data-i18n="optionsMenuOption"></div>
+                <div class="setts-desc" data-i18n="optionsMenuOptionDescription"></div>
+              </div>
+              <div class="setts-tbtn chex-s1">
+                <input id="popup_specific_options" type="checkbox" hidden>
+                <label for="popup_specific_options" class="b-chk v-on v-off"></label>
+              </div>
+            </div>
+            <div class="setts-expl">
+              <span data-i18n="popupExplanation"></span>
+            </div>
+          </div>
+
+          <p class="title3" >
+            <strong data-i18n="quickAccessButtons"></strong>
+          </p>
+          <div class="page-bd">
+            <div class="setts-item h-card">
+              <div class="setts-text">
+                <div class="setts-head" data-i18n="quickAccessButtonsVideo"></div>
+                <div class="setts-desc" data-i18n="quickAccessButtonsVideoDescription"></div>
+              </div>
+              <div class="setts-tbtn chex-s1">
+                <input id="quick_access_buttons_video" type="checkbox" hidden>
+                <label for="quick_access_buttons_video" class="b-chk v-on v-off"></label>
+              </div>
+            </div>
+            <div class="setts-item h-card">
+              <div class="setts-text">
+                <div class="setts-head" data-i18n="quickAccessButtonsImages"></div>
+                <div class="setts-desc" data-i18n="quickAccessButtonsImagesDescription"></div>
+              </div>
+              <div class="setts-tbtn chex-s1">
+                <input id="quick_access_buttons_images" type="checkbox" hidden>
+                <label for="quick_access_buttons_images" class="b-chk v-on v-off"></label>
+              </div>
+            </div>
+          </div>
+
+          <p class="title3" >
+            <strong data-i18n="liveVideoTitle"></strong>
+          </p>
+          <div class="page-bd">
+            <div class="setts-item h-card">
+              <div class="setts-text">
+                <div class="setts-head beta-feature" data-i18n="live_144"></div>
+                <div class="setts-desc" data-i18n="live_144_text"></div>
+              </div>
+              <div class="setts-tbtn chex-s1">
+                <input id="live_144" type="checkbox" hidden>
+                <label for="live_144" class="b-chk v-on v-off"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <button id="apply_btn" hidden>
+        <div data-i18n="pressEnter"></div>
+      </button>
+    </div>
+  </form>
+
+  <script type="module" src="options_code.js"></script>
 </body>
 
 </html>

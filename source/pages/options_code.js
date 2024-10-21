@@ -1,142 +1,131 @@
-let sitesIDs = ["youtube", "youtube_music", "embedded", "google_search"];
+import { setTheTitles, sitesInfo, _cnode, _svgel } from './setTheTitles.js'
 
-let sitesInfo = {
-  "youtube": {
-    "name": chrome.i18n.getMessage("youtube"),
-    "options": ["video", "thumbnails", "avatars", "adblocker", "other_images"]
-  },
-  "youtube_music": {
-    "name": chrome.i18n.getMessage("youtube_music"),
-    "options": ["video", "thumbnails", "avatars", "adblocker", "other_images"]
-  },
-  "embedded": {
-    "name": chrome.i18n.getMessage("embedded"),
-    "options": ["video", "thumbnails", "avatars", "adblocker"]
-  },
-  "google_search": {
-    "name": chrome.i18n.getMessage("google_search_full"),
-    "options": []
-  }
+const myCont = document.forms.container;
+const titles = {
+	options : chrome.i18n.getMessage('OptionsTitle'),
+	contact : chrome.i18n.getMessage('ContactTitle'),
+	about   : chrome.i18n.getMessage(  'AboutTitle'),
+
+	updPage(n = '') {
+		const { pathname, hash } = location;
+		const o = hash.substring(1) || 'options',
+		    ttl = this[n || (n = o)];
+		history.replaceState(null, ttl, n === 'options' ? pathname : `#${n}`);
+		myCont.classList.remove(`act-${o}`);
+		myCont.classList.   add(`act-${n}`);
+		document.title = ttl;
+	}
 };
 
-init();
+const qPages = {
+	removeQa(field) {
+		for(const key of Object.keys(this)) {
+			const keys = Object.keys(this[key]);
+			if (keys.includes(field))
+			if (keys.length === 1)
+				delete this[key];
+			else
+				delete this[key][field];
+		}
+	}
+};
 
-function init() {
-  addTemplates();
-  initializeListeners();
-  initializeOptions();
-}
+Object.defineProperty(qPages, 'removeQa', { enumerable: false });
+titles.updPage(), addTemplates(), setTheTitles();
+window.addEventListener('scroll', onScrollChange);
+myCont.addEventListener('submit', onApplyChanges);
+myCont.addEventListener('click' , onClickElem);
+myCont.addEventListener('change', () => {
+	onScrollChange();
+	myCont.elements.apply_btn.hidden = false;
+});
+
+chrome.storage.local.get().then(storedValues => {
+
+	for(const el of myCont.elements) {
+		const name = el.id;
+		if (name in storedValues)
+			el.checked = !!storedValues[name];
+	}
+	if (storedValues.qapages)
+		Object.assign(qPages, storedValues.qapages);
+});
 
 function addTemplates() {
-  let code = sitesIDs.map(id => {
-    return getSiteHTML(id, sitesInfo[id])
-  }).join("");
-  let childNodes = new DOMParser().parseFromString(code, "text/html").body.childNodes;
-  childNodes.forEach(node => {
-    document.querySelector("#addOptions").append(node);
-  });
+	const parent = document.getElementById('site_opts');
+	for(const site of Object.keys(sitesInfo)) {
+		const opts = sitesInfo[site].options,
+			  item = getSiteItem('', site, !!opts),
+			  cont = !!opts ? _cnode('div', { className: `setts-opts opt-${site}` }) : '\n';
+		if (opts)
+			cont.append(...opts.map(o => getSiteItem(`${site}_`, o)));
+		parent.append(item, cont);
+	}
 }
 
-function getSiteHTML(id, item) {
-  return `
-  <div class="pageBody" id="${id}">
-    <div class="settings setbord optionsGroupTitle">
-      <div class="descr_toggle">
-        <div class="settingsText">
-          <div class="settingsHead"><span data-i18n="${id}"></span></div>
-          <div class="settingsDescription" data-i18n="${id}Description"></div>
-        </div>
-        <div class="toggleButton">
-          <label class="switch">
-            <input type="checkbox" name="${id}" class="groupCheckboxes">
-            <span class="slider round"></span>
-          </label>
-        </div>
-      </div>
-    </div>
-    <div class="optionsContainer">
-    ${item.options.map(option => {
-    return `
-          <div class="settings setbord">
-            <div class="descr_toggle">
-              <ul class="settingsTextIcon">
-                <li class="settingsText">
-                  <div class="settingsHead"><span data-i18n="${option}"></span></div>
-                  <div class="settingsDescription" data-i18n="${option}Description"></div>
-                </li>
-              </ul>
-              <div class="toggleButton">
-                <label class="switch">
-                  <input type="checkbox" name="${id + "_" + option}" class="optionsCheckboxes">
-                  <span class="slider round"></span>
-                </label>
-              </div>
-            </div>
-          </div>
-        `;
-  }).join("")
-    }
-    </div>
-  </div>`
+function getSiteItem(gp = '', name = '', lm = false) {
+	const sHd = _cnode('div', { className: `${ lm ? 'check-lm ' : '' }setts-head` }),
+	     sDsc = _cnode('div', { className: 'setts-desc' }),
+	     sItm = _cnode('div', { className: `setts-item h-card${ lm ? ' gp-title' : '' }` }),
+	     sTxt = _cnode('div', { className: 'setts-text' }),
+	     sBtn = _cnode('div', { className: 'setts-tbtn chex-s1' }),
+	     sId  = gp + name;
+
+	sItm.append(sTxt, sBtn); sHd .textContent = chrome.i18n.getMessage(name);
+	sTxt.append(sHd , sDsc); sDsc.textContent = chrome.i18n.getMessage(`${name}Description`);
+	sBtn.append(
+		_cnode('input', { id: sId, type: 'checkbox', hidden: true }),
+		_cnode('label', { className: 'b-chk v-on v-off', htmlFor: sId }));
+	return sItm;
 }
 
-function initializeListeners() {
-  document.querySelectorAll("input[type='checkbox']").forEach(checkbox => {
-    let isGroupCheckbox = checkbox.classList.contains("groupCheckboxes");
-    let optionName = checkbox.name;
-
-    checkbox.addEventListener("change", function () {
-      detectChange(isGroupCheckbox, optionName, this.checked);
-    });
-  });
+function onClickElem(e) {
+	let el = e.target,
+	    n = el.dataset.i18n;
+	switch (el.classList[0]) {
+	case 'check-lm':
+		el = el.parentNode;
+	case 'check-mk':
+		el.parentNode.classList.toggle('u-roll');
+		break;
+	case 'menu-link':
+		if (n !== 'donation') {
+			titles.updPage(n);
+			break;
+		}
+	default:
+		return;
+	}
+	e.preventDefault();
 }
 
-function initializeOptions() {
-  chrome.storage.local.get(null, storedValues => {
-    let checkboxes = document.querySelectorAll("input[type='checkbox']");
-    checkboxes.forEach(checkbox => {
-      checkbox.checked = storedValues[checkbox.name];
-      checkbox.dispatchEvent(new Event("change"));
-    });
-  });
+function onApplyChanges(e) {
+
+	const newVal = {}; e.preventDefault();
+
+	let { id:optName, checked } = e.target;
+	switch ( optName ) {
+	  case 'popup_current_page':
+		newVal.sspages = [];
+		break;
+	  case 'quick_access_buttons_images':
+	  case 'quick_access_buttons_video':
+		if (!checked)
+			newVal.qapages = qPages.removeQa(optName.substring(optName.lastIndexOf('_')));
+	  default:
+		newVal[optName] = checked;
+		break;
+	}
+	chrome.storage.local.set(newVal);
+	myCont.elements.apply_btn.hidden = true;
 }
 
-function detectChange(isGroupCheckbox, optionName, checked) {
-  if (isGroupCheckbox) groupCheckboxChange(optionName, checked);
-  chrome.storage.local.get(null, storedValues => {
-    if (storedValues[optionName] != undefined) {
-      let newValues = {};
-      newValues[optionName] = checked;
-      if (!checked) {
-        switch (optionName) {
-          case "popup_current_page":
-            newValues["sspages"] = [];
-            break;
-          case "quick_access_buttons_images":
-            newValues.qapages = removeQAPagesRecords(storedValues.qapages, "images");
-            break;
-          case "quick_access_buttons_video":
-            newValues.qapages = removeQAPagesRecords(storedValues.qapages, "video");
-            break;
-          default:
-            break;
-        } 
-      }
-      chrome.storage.local.set(newValues);
-    }
-  });
-}
-
-function removeQAPagesRecords(qapages, field) {
-  for (const key in qapages) {
-    delete qapages[key][field];
-    if (Object.keys(qapages[key]).length === 0) delete qapages[key];
-  }
-  return qapages;
-}
-
-function groupCheckboxChange(optionName, checked) {
-  let optionsContainer = document.querySelector("#" + optionName + " .optionsContainer");
-  if (checked) optionsContainer.classList.add("visibleOptions");
-  else optionsContainer.classList.remove("visibleOptions");
+function onScrollChange() {
+	const s = window.innerHeight + Math.floor(window.scrollY) - 45,
+	      y = myCont.clientHeight <= s;
+	clearTimeout(myCont._t);
+	myCont._t = setTimeout(
+		y ? () => myCont.classList.add   ('scrl-ed')
+		  : () => myCont.classList.remove('scrl-ed')
+	, 25);
 }

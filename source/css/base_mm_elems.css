@@ -1,0 +1,152 @@
+
+[hidden] {
+	display: none!important;
+}
+
+.h-card {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: white;
+}
+
+/* buttons style */
+:root {
+	--s1-w: 37px; --s1-h: 18px; --s1-r: 20px; --s1-lh: 20px;
+	--s2-w: 37px; --s2-h: 22px; --s2-r:  2px; --s2-lh: 24px;
+
+	--on-bg1: #0067d5; --off-bg1: #f1f1f1; --x-bg1: #d1d1d1;
+	--on-bg2: #00d500; --off-bg2: #f40000; --x-bg2: #e0e0e0;
+
+	--on-c1: #f1f7f9; --off-c1: #757575; --x-c1: #6b5c5c;
+	--on-c2: #e0f2e2; --off-c2: #fff0f0; --x-c2: #abb1a0;
+
+	--Otl-c1: #ababb9; --sh-c1: rgba(48,48,48,.5);
+	--Otl-c2: #c7b9b9; --sh-c2: #a8a8a8;
+
+	--x-ico: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path stroke='black' stroke-width='2' stroke-linecap='round' d='M 1,1 9,9 M 9,1 1,9'/></svg>");
+}
+
+.chex-s1 { outline-color: var(--Otl-c1); }
+.chex-s2 { outline-color: var(--Otl-c2); }
+
+.chex-s1, .chex-s2 {
+	display: flex;
+	overflow: hidden;
+	outline-style: solid;
+	outline-width: 1px;
+}
+
+.b-chk, .b-chk:before, .b-chk:after {
+	display: inline-block;
+	transition: 0.8s ease all;
+}
+
+.b-chk {
+	color: #777;
+	background-color: #e0e0e0;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+}
+
+.v-on:before { content: 'ON'; }
+.v-off:after { content: 'OFF'; }
+.v-x:before  { content: '';
+	left: 0; right: 0;
+	bottom: 0; top: 0;
+	-webkit-mask: var(--x-ico) no-repeat center / 20%;
+	/*---*/ mask: var(--x-ico) no-repeat center / 20%;
+	position: absolute;
+}
+.v-x {
+	position: relative;
+}
+
+.chex-s1 { border-radius: var(--s1-r); }
+.chex-s2 { border-radius: var(--s2-r); }
+
+.chex-s1 .v-on, .chex-s1 .v-off { box-shadow: inset 0 0 1px var(--sh-c1); }
+.chex-s2 .v-on, .chex-s2 .v-off { box-shadow: inset 0 0 1px var(--sh-c2); }
+
+.chex-s1 .b-chk.v-on:before,
+.chex-s1 .b-chk.v-off:after,
+.chex-s1 .b-chk.v-x {
+	width: var(--s1-w);
+	height: var(--s1-h);
+	line-height: var(--s1-lh);
+}
+.chex-s2 .b-chk.v-on:before,
+.chex-s2 .b-chk.v-off:after,
+.chex-s2 .b-chk.v-x {
+	width: var(--s2-w);
+	height: var(--s2-h);
+	line-height: var(--s2-lh);
+}
+
+.chex-s1 .v-x        { background-color: var(--x-bg1); }
+.chex-s2 .v-x        { background-color: var(--x-bg2); }
+.chex-s1 .v-x:before { background-color: var(--x-c1); }
+.chex-s2 .v-x:before { background-color: var(--x-c2); }
+
+.chex-s1 [id$=_x]:checked ~ .v-x + * { border-radius: var(--s1-r) 0 0 var(--s1-r); }
+.chex-s2 [id$=_x]:checked ~ .v-x + * { border-radius: var(--s2-r) 0 0 var(--s2-r); }
+
+.chex-s1 [type=checkbox]:not(:checked) ~ .v-on:before,
+.chex-s2 [type=checkbox]:not(:checked) ~ .v-on:before,
+.chex-s1 [type=checkbox]:checked ~ .v-off:after,
+.chex-s2 [type=checkbox]:checked ~ .v-off:after { color: transparent; }
+
+.chex-s1 [type=checkbox]:checked ~ .v-on:before,
+.chex-s1 [id$="_on"    ]:checked ~ .v-on:before { background-color: var(--on-bg1); color: var(--on-c1); }
+.chex-s2 [type=checkbox]:checked ~ .v-on:before,
+.chex-s2 [id$="_on"    ]:checked ~ .v-on:before { background-color: var(--on-bg2); color: var(--on-c2); }
+
+.chex-s1 [type=checkbox]         ~ .v-off:after,
+.chex-s1 [id$="_off"   ]:checked ~ .v-off:after { background-color: var(--off-bg1); color: var(--off-c1); }
+.chex-s2 [type=checkbox]         ~ .v-off:after,
+.chex-s2 [id$="_off"   ]:checked ~ .v-off:after { background-color: var(--off-bg2); color: var(--off-c2); }
+
+.chex-s1 [id$="_on"    ]:checked ~ .v-off:after { box-shadow: inset  2px 0 3px var(--sh-c1); }
+.chex-s2 [id$="_on"    ]:checked ~ .v-off:after { box-shadow: inset  2px 0 3px var(--sh-c2); }
+.chex-s1 [id$="_off"   ]:checked ~ .v-on:before { box-shadow: inset -2px 0 3px var(--sh-c1); }
+.chex-s2 [id$="_off"   ]:checked ~ .v-on:before { box-shadow: inset -2px 0 3px var(--sh-c2); }
+
+[id$=_x]:checked ~ .v-x {
+	opacity: 0;
+	visibility: hidden;
+}
+[id$=_x]:not(:checked):hover ~ .v-x:before { background-color: black; }
+[id$=_off]:not(:checked):hover ~ .v-off,
+[id$=_on]:not(:checked):hover ~ .v-on,
+[id$=_x]:not(:checked):hover ~ .v-x {
+	color: black;
+}
+
+
+#apply_btn {
+	text-align: center;
+	border-radius: 4px;
+	background-color: #09c622;
+	color: white;
+	width: 100%;
+	border-style: solid;
+	border-width: 0 2px 3px 1px;
+	border-color: #eee #ddd #ccc #ddd;
+	padding: 5px 0;
+	margin: 10px 0 0;
+	cursor: pointer;
+}
+#apply_btn:active {
+	border-width: 3px 1px 1px 2px;
+}
+#apply_btn:hover {
+	background-color: #0cab21;
+}
+
+/* animations */
+@keyframes show {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}

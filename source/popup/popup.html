@@ -13,66 +13,53 @@
         <use href="/img/logo/full_logo.svg#mm__logo" width="30" height="30"></use>
         <use href="/img/logo/logo_only.svg#mm__tShort" fill="#fc0000"></use>
       </svg>
-      <div class="trigger-btn btn-s2">
+      <div class="chex-s2">
         <input id="mm_enabled_on"  type="radio" name="mm_enabled" value="1" hidden>
         <input id="mm_enabled_off" type="radio" name="mm_enabled" value="0" hidden>
         <!-- Labels for 'enabled' input -->
-        <label for="mm_enabled_on" class="checkbox v-on" data-title="onTooltip"></label>
-        <label for="mm_enabled_off" class="checkbox v-off" data-title="offTooltip"></label>
+        <label for="mm_enabled_on" class="b-chk v-on" data-title="onTooltip"></label>
+        <label for="mm_enabled_off" class="b-chk v-off" data-title="offTooltip"></label>
       </div>
     </header>
 
     <main>
       <div class="cr-per">
-        <div class="tab_page_header">
-          <div>
-            <span data-i18n="current_tab" data-title="currentTabTooltip">Current tab</span>
-          </div>
-          <div class="trigger-btn btn-s3">
+        <div class="h-card">
+          <div data-i18n="current_tab" data-title="currentTabTooltip">Current tab</div>
+          <div class="chex-s2">
             <input id="tab_endis_x"   type="radio" name="tab_endis" value="" hidden checked>
             <input id="tab_endis_on"  type="radio" name="tab_endis" value="1" hidden>
             <input id="tab_endis_off" type="radio" name="tab_endis" value="0" hidden>
             <!-- Labels for 'tab_endis' input -->
-            <label for="tab_endis_x" class="checkbox v-x" data-title="tabXTooltip">
-              <svg class="bi-ico" xmlns="http://www.w3.org/2000/svg">
-                <use href="#icon__x"></use>
-              </svg>
-            </label>
-            <label for="tab_endis_on"  class="checkbox v-on"  data-title="tabOnTooltip"></label>
-            <label for="tab_endis_off" class="checkbox v-off" data-title="tabOffTooltip"></label>
+            <label for="tab_endis_x"   class="b-chk v-x"   data-title="tabXTooltip"></label>
+            <label for="tab_endis_on"  class="b-chk v-on"  data-title="tabOnTooltip"></label>
+            <label for="tab_endis_off" class="b-chk v-off" data-title="tabOffTooltip"></label>
           </div>
         </div>
         <div class="site-options-list" id="tab_options"></div>
       </div>
 
       <div class="cr-per" hidden>
-        <div class="tab_page_header">
-          <div>
-            <span data-i18n="current_page" data-title="currentPageTooltip">Current page</span>
-          </div>
-          <div class="trigger-btn btn-s3">
+        <div class="h-card">
+          <div data-i18n="current_page" data-title="currentPageTooltip">Current page</div>
+          <div class="chex-s2">
             <input id="page_endis_x"   type="radio" name="page_endis" value="" hidden checked>
             <input id="page_endis_on"  type="radio" name="page_endis" value="1" hidden>
             <input id="page_endis_off" type="radio" name="page_endis" value="0" hidden>
             <!-- Labels for 'page_endis' input -->
-            <label for="page_endis_x" class="checkbox v-x" data-title="pageXTooltip">
-              <svg class="bi-ico" xmlns="http://www.w3.org/2000/svg">
-                <use href="#icon__x"></use>
-              </svg>
-            </label>
-            <label for="page_endis_on"  class="checkbox v-on"  data-title="pageOnTooltip"></label>
-            <label for="page_endis_off" class="checkbox v-off" data-title="pageOffTooltip"></label>
+            <label for="page_endis_x"   class="b-chk v-x"   data-title="pageXTooltip"></label>
+            <label for="page_endis_on"  class="b-chk v-on"  data-title="pageOnTooltip"></label>
+            <label for="page_endis_off" class="b-chk v-off" data-title="pageOffTooltip"></label>
           </div>
         </div>
         <div class="site-options-list" id="page_options"></div>
       </div>
 
-      <button id="apply_btn" data-must-update="false" hidden>
-        <div>OK</div>
-        <div id="pressEnter" data-i18n="pressEnter"></div>
+      <button id="apply_btn" hidden>
+        <div data-i18n="pressEnter"></div>
       </button>
     </main>
-    
+
     <div id="moreBox">
       <div class="mr-cell">
         <a id="support_btn" class="my-lnk" href="/pages/contact.html" target="_blank">
@@ -118,7 +105,7 @@
       <div data-i18n="translatedBy"></div>
     </div>
   </form>
-  <script src="popup.js" type="application/javascript"></script>
+  <script type="module" src="popup.js"></script>
 </body>
 
 </html>
